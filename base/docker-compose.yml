@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.1.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=secreto
+    ports:
+      - "3306:3306"
+  clientes:
+    image: jcabelloc/clientes:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+  prestamos:
+    image: jcabelloc/prestamos:0.0.1-SNAPSHOT
+    ports:
+      - "8082:8082"
