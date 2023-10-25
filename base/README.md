@@ -18,6 +18,25 @@ USE `prestamos`;
 CREATE USER IF NOT EXISTS 'prestamos' identified by 'secreto';
 GRANT ALL PRIVILEGES ON `prestamos`.* TO 'prestamos'@'%';
 FLUSH PRIVILEGES;
+```
 
+### Generar Imagenes
+#### Opcion 1) Usando Dockerfile
+``` 
+mvn clean package
+docker build -t jcabelloc/prestamos .
+docker run -p 8080:8080 jcabelloc/prestamos 
+```
 
+``` 
+mvn clean package
+docker build -t jcabelloc/clientes .
+docker run -p 8080:8080 jcabelloc/clientes
+
+```
+
+#### Opcion 2) Usando BuildPacks
+```
+mvn spring-boot:build-image 
+mvn spring-boot:build-image -DskipTests
 ```
