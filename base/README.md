@@ -40,3 +40,10 @@ docker run -p 8080:8080 jcabelloc/clientes
 mvn spring-boot:build-image 
 mvn spring-boot:build-image -DskipTests
 ```
+
+
+### Docker Compose
+```
+docker compose up
+docker compse down
+```
