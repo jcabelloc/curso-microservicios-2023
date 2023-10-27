@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: configuration-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          # class-path(classpath:/config) o en el filesystem
+          # search-locations: file:///${CONFIG_HOME}    <= en Windows?
+          search-locations: file://${CONFIG_HOME}
+server:
+  port: 8888

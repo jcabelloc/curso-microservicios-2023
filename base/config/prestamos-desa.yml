@@ -1,0 +1,9 @@
+propiedad:
+  ejemplo: Hola Desa
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/prestamos
+    username: prestamos
+    password: 'secreto'
+
