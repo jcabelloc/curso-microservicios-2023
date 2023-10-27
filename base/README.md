@@ -47,3 +47,15 @@ mvn spring-boot:build-image -DskipTests
 docker compose up
 docker compse down
 ```
+
+### Configuracion Service
+
+```
+export CONFIG_HOME=~/workspaces/cursos/curso-microservicios/base/config
+set CONFIG_HOME='C:/'
+```
+
+```
+export ENCRYPT_KEY=clavesupersupercreta
+set ENCRYPT_KEY=clavesupersupercreta
+```
