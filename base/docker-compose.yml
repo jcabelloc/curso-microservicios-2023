@@ -1,11 +1,26 @@
 version: '3'
 
 services:
+  configuration-service:
+    image: jcabelloc/configuration-service:0.0.1-SNAPSHOT
+    ports:
+      - "8888:8888"
+    environment:
+      - "CONFIG_HOME=/config"
+      - "ENCRYPT_KEY=${ENCRYPT_KEY}"
+    volumes:
+      - ./config:/config
   clientes:
     image: jcabelloc/clientes:0.0.1-SNAPSHOT
     ports:
       - "8081:8081"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+      - "SPRING_CLOUD_CONFIG_URI=http://configuration-service:8888"
   prestamos:
     image: jcabelloc/prestamos:0.0.1-SNAPSHOT
     ports:
       - "8082:8082"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+      - "SPRING_CLOUD_CONFIG_URI=http://configuration-service:8888"
