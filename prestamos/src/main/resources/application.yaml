@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: prestamos
+  profiles:
+    active: desa
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
