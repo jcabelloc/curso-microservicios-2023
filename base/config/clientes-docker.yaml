@@ -1,0 +1,10 @@
+propiedad:
+  ejemplo: Hola Docker
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.106:3306/clientes
+    username: clientes
+    password: 'secreto'
+
