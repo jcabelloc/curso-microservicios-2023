@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: eureka-service
+  profiles:
+    active: default
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+
+
