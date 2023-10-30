@@ -6,3 +6,9 @@ spring:
     url: jdbc:mysql://localhost:3306/clientes
     username: clientes
     password: '{cipher}8110111cb5e8229f63158584da85131166a88678adc6611d855bcbc4fe6481be'
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
