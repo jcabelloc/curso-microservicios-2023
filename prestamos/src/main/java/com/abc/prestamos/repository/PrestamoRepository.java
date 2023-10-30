@@ -6,18 +6,29 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 public interface PrestamoRepository extends JpaRepository<Prestamo, Integer> {
-  @Query("SELECT pr "
-      + "   FROM Prestamo pr"
-  )
-  List<PrestamoDto> getAll();
-  @Query("SELECT "
+  @Query("SELECT new com.abc.prestamos.model.PrestamoDto("
       + "    pr.nroPrestamo AS nroPrestamo,"
+      + "    pr.codCliente AS codCliente,"
       + "    pr.montoDesembolso AS montoDesembolso,"
       + "    pr.tea AS tea, "
       + "    pr.nroCuotas AS nroCuotas,"
-      + "    pr.frecuencia  AS frecuencia"
+      + "    pr.frecuencia  AS frecuencia "
+      + "    )"
       + "   FROM Prestamo pr"
   )
-  List<PrestamoDto> getAll1();
+  List<PrestamoDto> getAll();
+
+  @Query("SELECT new com.abc.prestamos.model.PrestamoDto("
+      + "    pr.nroPrestamo AS nroPrestamo,"
+      + "    pr.codCliente AS codCliente,"
+      + "    pr.montoDesembolso AS montoDesembolso,"
+      + "    pr.tea AS tea, "
+      + "    pr.nroCuotas AS nroCuotas,"
+      + "    pr.frecuencia  AS frecuencia "
+      + "    )"
+      + "   FROM Prestamo pr"
+      + "  WHERE pr.nroPrestamo = :nroPrestamo "
+  )
   Optional<PrestamoDto> findDtoByNroPrestamo(Integer nroPrestamo);
+
 }

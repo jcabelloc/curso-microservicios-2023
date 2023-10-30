@@ -9,13 +9,21 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Prestamo {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer nroPrestamo;
+
+  private Integer codCliente;
+
   private BigDecimal montoDesembolso;
+
   private BigDecimal tea;
+
   private Integer nroCuotas;
+
   @Enumerated(EnumType.STRING)
   private Frecuencia frecuencia;
+
   public enum Frecuencia { MENSUAL, SEMANAL }
 }

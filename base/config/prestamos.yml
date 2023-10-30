@@ -4,6 +4,10 @@ propiedad:
 server:
   port: 8082
 
+spring:
+  flyway:
+    locations: classpath:/db/migration,classpath:/db/testdata
+
 eureka:
   instance:
     preferIpAddress: true
