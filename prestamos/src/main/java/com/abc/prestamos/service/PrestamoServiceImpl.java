@@ -1,4 +1,6 @@
 package com.abc.prestamos.service;
+import com.abc.prestamos.client.ClienteClient;
+import com.abc.prestamos.client.ClienteDto;
 import com.abc.prestamos.entity.Prestamo;
 import com.abc.prestamos.model.PrestamoDto;
 import com.abc.prestamos.model.PrestamoReq;
@@ -13,6 +15,21 @@ import org.springframework.stereotype.Service;
 public class PrestamoServiceImpl implements PrestamoService {
   @Autowired
   PrestamoRepository prestamoRepository;
+
+  @Autowired
+  ClienteClient clienteClient;
+  @Override
+  public PrestamoDto getDtoById(Integer nroPrestamo) {
+    Optional<PrestamoDto> opt = prestamoRepository.findDtoByNroPrestamo(nroPrestamo);
+    PrestamoDto prestamo = opt.orElseThrow(() -> new RuntimeException("No existe tal prestamo"));
+
+    ClienteDto cliente = clienteClient.getCliente(prestamo.getCodCliente());
+    prestamo.setNombreCliente(cliente.getNombres() + " " + cliente.getApellidoPaterno());
+    prestamo.setClasificacionCliente(cliente.getClasificacion());
+
+    return prestamo;
+  }
+
   @Override
   public Prestamo create(PrestamoReq req) {
     Prestamo prestamo = Prestamo
@@ -36,11 +53,6 @@ public class PrestamoServiceImpl implements PrestamoService {
     prestamo.setFrecuencia(req.getFrecuencia());
     prestamo.setNroCuotas(req.getNroCuotas());
     return prestamoRepository.save(prestamo);
-  }
-  @Override
-  public PrestamoDto getDtoById(Integer nroPrestamo) {
-    Optional<PrestamoDto> opt = prestamoRepository.findDtoByNroPrestamo(nroPrestamo);
-    return opt.orElseThrow(() -> new RuntimeException("No existe tal prestamo"));
   }
   @Override
   public Prestamo getById(Integer nroPrestamo) {
