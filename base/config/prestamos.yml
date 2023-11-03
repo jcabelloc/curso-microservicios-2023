@@ -44,3 +44,11 @@ resilience4j.circuitbreaker:
     clientes:
       baseConfig: default
       failureRateThreshold: 20
+
+# Configuracion de Retry
+resilience4j.retry:
+  retryAspectOrder: 2
+  instances:
+    clientes:
+      maxAttempts: 3
+      waitDuration: 1s
