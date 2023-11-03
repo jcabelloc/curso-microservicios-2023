@@ -8,9 +8,39 @@ spring:
   flyway:
     locations: classpath:/db/migration,classpath:/db/testdata
 
+# Habilitar todos los endpoints de Spring Boot Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by_default: true
+    health:
+      show-details: always
+      circuitbreakers.enabled: true
+
 eureka:
   instance:
     preferIpAddress: true
   client:
     registerWithEureka: true
     fetchRegistry: true
+
+
+# Configuracion de Circuit Breaker
+resilience4j.circuitbreaker:
+  circuitBreakerAspectOrder: 1
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowType: TIME_BASED
+      minimumNumberOfCalls: 20
+      waitDurationInOpenState: 50s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+  instances:
+    clientes:
+      baseConfig: default
+      failureRateThreshold: 20

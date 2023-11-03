@@ -1,5 +1,7 @@
 propiedad:
   ejemplo: Hola Default
+  tasaErrores: 50
+
 
 server:
   port: 8081

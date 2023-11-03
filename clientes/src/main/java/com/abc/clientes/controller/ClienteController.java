@@ -2,6 +2,7 @@ package com.abc.clientes.controller;
 
 import com.abc.clientes.model.ClienteDto;
 import com.abc.clientes.model.ClienteReq;
+import com.abc.clientes.properties.PropertiesConfig;
 import com.abc.clientes.service.ClienteService;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -25,6 +26,9 @@ public class ClienteController {
 
   @Autowired
   ClienteService clienteService;
+
+  @Autowired
+  PropertiesConfig propConfig;
 
   @PostMapping
   public Integer create(@Valid @RequestBody ClienteReq clienteReq, BindingResult result) {
@@ -56,6 +60,16 @@ public class ClienteController {
   @GetMapping("/{codCliente}")
   public ClienteDto getDtoById(@PathVariable Integer codCliente) {
     logger.debug("Obteniendo Cliente con codCliente {}", codCliente);
+
+    // Simulacion de Falla
+    double valor = Math.random() * 100;
+    logger.warn("Tasa de errores configurado {} ", propConfig.getTasaErrores());
+    if (valor < propConfig.getTasaErrores()) {
+      logger.error("Error al obtener Cliente {} ", codCliente);
+      throw new RuntimeException("Error al Obtener cliente");
+    }
+
+
     return clienteService.getDtoById(codCliente);
   }
 
