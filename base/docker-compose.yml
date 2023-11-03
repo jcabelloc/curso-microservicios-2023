@@ -10,6 +10,14 @@ services:
       - "ENCRYPT_KEY=${ENCRYPT_KEY}"
     volumes:
       - ./config:/config
+  eureka-service:
+    image: jcabelloc/eureka-service:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+    environment:
+      - "SPRING_CLOUD_CONFIG_URI=http://configuration-service:8888"
+    depends_on:
+      - configuration-service
   clientes:
     image: jcabelloc/clientes:0.0.1-SNAPSHOT
     ports:
@@ -17,6 +25,8 @@ services:
     environment:
       - "SPRING_PROFILES_ACTIVE=docker"
       - "SPRING_CLOUD_CONFIG_URI=http://configuration-service:8888"
+    depends_on:
+      - eureka-service
   prestamos:
     image: jcabelloc/prestamos:0.0.1-SNAPSHOT
     ports:
@@ -24,3 +34,5 @@ services:
     environment:
       - "SPRING_PROFILES_ACTIVE=docker"
       - "SPRING_CLOUD_CONFIG_URI=http://configuration-service:8888"
+    depends_on:
+      - eureka-service

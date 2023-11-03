@@ -45,7 +45,7 @@ mvn spring-boot:build-image -DskipTests
 ### Docker Compose
 ```
 docker compose up
-docker compse down
+docker compose down
 ```
 
 ### Configuracion Service
