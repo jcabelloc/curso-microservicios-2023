@@ -25,3 +25,16 @@ spring:
       discovery.locator:
         enabled: true
         lowerCaseServiceId: true
+      routes:
+        - id: mis-clientes-route
+          uri: lb://clientes
+          predicates:
+            - Path=/abc-customers/**
+          filters:
+            - RewritePath=/abc-customers/(?<path>.*), /$\{path}
+        - id: mis-prestamos-route
+          uri: lb://prestamos
+          predicates:
+            - Path=/abc-lendings/**
+          filters:
+            - RewritePath=/abc-lendings/(?<path>.*), /$\{path}
