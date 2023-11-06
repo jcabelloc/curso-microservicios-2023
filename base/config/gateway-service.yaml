@@ -1,0 +1,19 @@
+server:
+  port: 8072
+
+# Habilitar todos los endpoints de Spring Boot Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by_default: true
+    health:
+      show-details: always
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
