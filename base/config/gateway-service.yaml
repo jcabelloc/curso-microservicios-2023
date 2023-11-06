@@ -17,3 +17,11 @@ eureka:
   client:
     registerWithEureka: true
     fetchRegistry: true
+
+
+spring:
+  cloud:
+    gateway:
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
