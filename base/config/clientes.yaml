@@ -2,6 +2,7 @@ propiedad:
   ejemplo: Hola Default
   tasaErrores: 50
 
+logging.level.com.abc: DEBUG
 
 server:
   port: 8081

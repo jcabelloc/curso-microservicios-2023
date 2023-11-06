@@ -11,6 +11,8 @@ management:
     health:
       show-details: always
 
+logging.level.com.abc: DEBUG
+
 eureka:
   instance:
     preferIpAddress: true

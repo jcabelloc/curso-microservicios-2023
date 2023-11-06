@@ -26,6 +26,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
 
+logging.level.com.abc: DEBUG
 
 # Configuracion de Circuit Breaker
 resilience4j.circuitbreaker:
