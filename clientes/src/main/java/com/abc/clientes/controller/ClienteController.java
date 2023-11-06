@@ -1,5 +1,6 @@
 package com.abc.clientes.controller;
 
+import com.abc.clientes.context.ContextHolder;
 import com.abc.clientes.model.ClienteDto;
 import com.abc.clientes.model.ClienteReq;
 import com.abc.clientes.properties.PropertiesConfig;
@@ -53,6 +54,7 @@ public class ClienteController {
   @GetMapping
   public List<ClienteDto> getAll() {
     logger.debug("Obteniendo Clientes");
+    logger.debug("id-correlativo: {}", ContextHolder.getContext().getIdCorrelativo());
 
     return clienteService.getAll();
   }
@@ -60,6 +62,7 @@ public class ClienteController {
   @GetMapping("/{codCliente}")
   public ClienteDto getDtoById(@PathVariable Integer codCliente) {
     logger.debug("Obteniendo Cliente con codCliente {}", codCliente);
+    logger.debug("id-correlativo: {}", ContextHolder.getContext().getIdCorrelativo());
 
     // Simulacion de Falla
     double valor = Math.random() * 100;

@@ -1,5 +1,6 @@
 package com.abc.prestamos.client;
 
+import com.abc.prestamos.context.ContextInterceptor;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.Logger;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-@FeignClient(value = "clientes")
+@FeignClient(value = "clientes", configuration = ContextInterceptor.class)
 public interface ClienteClient {
 
 

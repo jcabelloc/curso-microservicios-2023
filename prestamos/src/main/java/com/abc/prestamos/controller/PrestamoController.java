@@ -1,4 +1,5 @@
 package com.abc.prestamos.controller;
+import com.abc.prestamos.context.ContextHolder;
 import com.abc.prestamos.model.PrestamoDto;
 import com.abc.prestamos.model.PrestamoReq;
 import com.abc.prestamos.service.PrestamoService;
@@ -35,11 +36,13 @@ public class PrestamoController {
   @GetMapping
   public List<PrestamoDto> getAll() {
     logger.debug("Obteniendo Prestamos");
+    logger.debug("id-correlativo: {}", ContextHolder.getContext().getIdCorrelativo());
     return prestamoService.getAll();
   }
   @GetMapping("/{nroPrestamo}")
   public PrestamoDto getDtoById(@PathVariable Integer nroPrestamo) {
     logger.debug("Obteniendo Prestamo con nroPrestamo {}", nroPrestamo);
+    logger.debug("id-correlativo: {}", ContextHolder.getContext().getIdCorrelativo());
     return prestamoService.getDtoById(nroPrestamo);
   }
 }
