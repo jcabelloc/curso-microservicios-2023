@@ -12,3 +12,9 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+
+# URI Authorization Server
+openid:
+  jwt:
+    issuerUri: http://localhost:8080/realms/abc-realm

@@ -11,9 +11,26 @@ spring:
   flyway:
     locations: classpath:/db/migration,classpath:/db/testdata
 
+
+# Configuracion Requerida como Resource Server
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      # deals with single and multi-valued JWT claims
+      accept-single-value-as-array: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${openid.jwt.issuerUri}
+          jwk-set-uri: ${openid.jwt.issuerUri}/protocol/openid-connect/certs
+
+
 eureka:
   instance:
     preferIpAddress: true
   client:
     registerWithEureka: true
     fetchRegistry: true
+
