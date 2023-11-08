@@ -10,6 +10,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,6 +57,17 @@ public class ClienteController {
   public List<ClienteDto> getAll() {
     logger.debug("Obteniendo Clientes");
     logger.debug("id-correlativo: {}", ContextHolder.getContext().getIdCorrelativo());
+
+
+    var auth =  SecurityContextHolder.getContext().getAuthentication();
+    if (auth instanceof JwtAuthenticationToken) {
+      var jwtAuthToken =  (JwtAuthenticationToken) auth;
+      logger.debug("Valor del JwtToken: {}", jwtAuthToken.getToken().getTokenValue());
+    }
+    logger.debug("Datos del auth.getPrincipal(): {}", auth.getPrincipal());
+    logger.debug("Datos del auth.getName(): {}", auth.getName());
+    logger.debug("Datos del Authorities {}", auth.getAuthorities());
+    logger.debug("Esta autenticado {}", auth.isAuthenticated());
 
     return clienteService.getAll();
   }
