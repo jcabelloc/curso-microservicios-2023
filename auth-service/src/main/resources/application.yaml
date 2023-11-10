@@ -1,6 +1,6 @@
 spring:
   application:
-    name: clientes
+    name: auth-service
   profiles:
     active: desa
   config:

@@ -85,3 +85,12 @@ http://localhost:8080/realms/abc-realm/protocol/openid-connect/auth?client_id=po
 http://localhost:4200/auth?session_state=4f6126de-1fdc-452a-b6a1-9bc3d322d4d7&code=4bbf9f13-6a40-4cbb-bd14-bacaeb52bea3.4f6126de-1fdc-452a-b6a1-9bc3d322d4d7.25c7bb91-d855-4947-895d-dbcaf900dad2
 ```
 * Usar dicho "code" en Postman para solicitar el token
+
+
+
+### Spring Authorization Server
+* Para obtener el Authorization Code, desde el Browser
+```
+http://localhost:8080/oauth2/authorize?response_type=code&client_id=portal-abc&scope=openid&redirect_uri=http://localhost:4200/auth
+```
+* Obtener el "code", y usarlo para obtener el token(postman)
