@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
+logging.level.com.abc: DEBUG
+
+
+# Habilitar todos los endpoints de Spring Boot Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by_default: true
+    health:
+      show-details: always
