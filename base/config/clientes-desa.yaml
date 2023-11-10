@@ -17,4 +17,7 @@ eureka:
 # URI Authorization Server
 openid:
   jwt:
-    issuerUri: http://localhost:8080/realms/abc-realm
+    # Configuracion para Keycloak
+    # issuerUri: http://localhost:8080/realms/abc-realm
+    # Configuracion para Spring Authorization Server
+    issuerUri: http://localhost:8080

@@ -20,7 +20,8 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: ${openid.jwt.issuerUri}
-          jwk-set-uri: ${openid.jwt.issuerUri}/protocol/openid-connect/certs
+          # Requerido para keycloak
+          # jwk-set-uri: ${openid.jwt.issuerUri}/protocol/openid-connect/certs
 
 # Habilitar todos los endpoints de Spring Boot Actuator
 management:
