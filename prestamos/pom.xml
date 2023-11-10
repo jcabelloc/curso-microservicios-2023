@@ -66,6 +66,12 @@
 			<artifactId>resilience4j-spring-boot3</artifactId>
 		</dependency>
 
+		<!-- OAuth2 Resource Server para uso de Authorization Server basado en OAuth2: Keycloack / Spring Authorization Server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+
 
 		<!-- Config Client -->
 		<dependency>

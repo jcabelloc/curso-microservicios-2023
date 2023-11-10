@@ -12,7 +12,7 @@ spring:
     locations: classpath:/db/migration,classpath:/db/testdata
 
 
-# Configuracion Requerida como Resource Server
+  # Configuracion Requerida como Resource Server
   jackson:
     serialization:
       write-dates-as-timestamps: false
