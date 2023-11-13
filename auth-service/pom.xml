@@ -70,7 +70,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+						<name>jcabelloc/${project.artifactId}:${project.version}</name>
 					</image>
 				</configuration>
 			</plugin>
