@@ -2,7 +2,7 @@ spring:
   application:
     name: gateway-service
   profiles:
-    active: default
+    active: desa
   config:
     import: "optional:configserver:"
   cloud:

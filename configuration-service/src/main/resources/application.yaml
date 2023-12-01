@@ -3,6 +3,7 @@ spring:
     name: configuration-service
   profiles:
     active: native
+    # active: awss3
   cloud:
     config:
       server:
@@ -10,5 +11,9 @@ spring:
           # class-path(classpath:/config) o en el filesystem
           # search-locations: file:///${CONFIG_HOME}    <= en Windows?
           search-locations: file://${CONFIG_HOME}
+        awss3:
+          region: us-east-1
+          bucket: ${S3_CONFIG_HOME}
 server:
   port: 8888
+
